@@ -54,27 +54,59 @@ def fetch_workday(company):
     Workday's public job search runs on a JSON API under /wday/cxs/.
     Pattern: https://{tenant}.{wd_host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs
     It's a POST endpoint that supports pagination via 'offset'.
+
+    Workday's API will report an accurate 'total' but silently stop
+    returning postings after a couple pages if the request doesn't look
+    like it's coming from a real browser session on the actual site. To
+    work around that: use a persistent session, visit the human-facing
+    search page first to pick up cookies, and send Referer/Origin/Accept
+    headers matching that page on every subsequent request.
     """
     tenant = company["tenant"]
     wd_host = company["wd_host"]
     site = company["site"]
+    site_url = f"https://{tenant}.{wd_host}.myworkdayjobs.com/{site}"
     base = f"https://{tenant}.{wd_host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+        "Referer": site_url,
+        "Origin": f"https://{tenant}.{wd_host}.myworkdayjobs.com",
+    })
+
+    # Visit the human-facing page first so Workday sets normal session cookies
+    # before we start hitting the JSON API — this is what a real browser does.
+    try:
+        session.get(site_url, timeout=20)
+    except requests.RequestException:
+        pass  # not fatal, worth trying the API calls regardless
 
     jobs = []
     offset = 0
     limit = 20
     reported_total = None
+    stall_count = 0
     while True:
         payload = {"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""}
-        resp = requests.post(base, json=payload, headers=HEADERS, timeout=20)
+        resp = session.post(base, json=payload, timeout=20)
         resp.raise_for_status()
         data = resp.json()
         postings = data.get("jobPostings", [])
         if reported_total is None:
             reported_total = data.get("total", 0)
             print(f"  [debug] {company['name']}: Workday reports 'total'={reported_total}")
+
         if not postings:
-            print(f"  [debug] {company['name']}: API returned 0 postings at offset={offset}, stopping")
+            if len(jobs) < reported_total and stall_count == 0:
+                # Got cut off before reaching the reported total — retry once
+                # in case it was a one-off hiccup rather than a hard cap.
+                stall_count += 1
+                continue
+            print(f"  [debug] {company['name']}: stopped at offset={offset}, "
+                  f"fetched {len(jobs)}/{reported_total}")
             break
 
         for p in postings:
@@ -83,7 +115,7 @@ def fetch_workday(company):
                 "id": f"workday-{tenant}-{path}",
                 "title": p.get("title", ""),
                 "location": p.get("locationsText", ""),
-                "url": f"https://{tenant}.{wd_host}.myworkdayjobs.com/{site}{path}",
+                "url": f"{site_url}{path}",
                 "description": "",  # Workday list view doesn't include full JD; title/location is enough to match on
             })
 
@@ -91,7 +123,7 @@ def fetch_workday(company):
         total = data.get("total", 0)
         if offset >= total:
             break
-        if offset > 500:  # safety valve
+        if offset > 1000:  # safety valve
             break
 
     return jobs
