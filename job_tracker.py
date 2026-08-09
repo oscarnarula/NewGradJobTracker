@@ -63,13 +63,18 @@ def fetch_workday(company):
     jobs = []
     offset = 0
     limit = 20
+    reported_total = None
     while True:
         payload = {"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""}
         resp = requests.post(base, json=payload, headers=HEADERS, timeout=20)
         resp.raise_for_status()
         data = resp.json()
         postings = data.get("jobPostings", [])
+        if reported_total is None:
+            reported_total = data.get("total", 0)
+            print(f"  [debug] {company['name']}: Workday reports 'total'={reported_total}")
         if not postings:
+            print(f"  [debug] {company['name']}: API returned 0 postings at offset={offset}, stopping")
             break
 
         for p in postings:
