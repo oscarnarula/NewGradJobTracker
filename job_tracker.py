@@ -129,8 +129,12 @@ def strip_html(text):
 
 
 def matches_keywords(job, keywords):
-    haystack = f"{job['title']} {job.get('description', '')}".lower()
-    return any(kw.lower().strip() in haystack for kw in keywords)
+    # Match on the TITLE only. Matching against full descriptions catches
+    # boilerplate (EEO statements, privacy footers) that mentions generic
+    # words like "data" in every posting regardless of role — that's what
+    # was pulling in daycare and network engineer postings.
+    title = job["title"].lower()
+    return any(kw.lower().strip() in title for kw in keywords)
 
 
 def matches_location(job, location_filter):
