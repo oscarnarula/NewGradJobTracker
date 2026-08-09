@@ -120,8 +120,7 @@ def fetch_workday(company):
             })
 
         offset += limit
-        total = data.get("total", 0)
-        if offset >= total:
+        if offset >= reported_total:
             break
         if offset > 1000:  # safety valve
             break
