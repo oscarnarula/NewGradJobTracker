@@ -1,0 +1,186 @@
+{
+  "keywords": [
+    "analyst", "data", "business intelligence", "bi ", "insights",
+    "reporting", "operations analyst", "strategy analyst", "research analyst",
+    "market analyst", "product analyst", "financial analyst", "analytics"
+  ],
+  "entry_level_signals": [
+    "entry", "entry-level", "entry level", "new grad", "new graduate",
+    "university grad", "campus", "associate", "analyst i ", "analyst i,",
+    "level 1", "l1", "rotational", "development program", "leap",
+    "0-2 years", "0-1 year", "1-2 years", "recent graduate"
+  ],
+  "experienced_signals": [
+    "senior", "sr.", "sr ", "ii ", "iii ", "iv ", "lead ", "principal",
+    "manager", "director", "5+ years", "7+ years", "10+ years",
+    "3-5 years", "minimum 5", "minimum 7"
+  ],
+  "companies": [
+    {
+      "name": "Fidelity Investments",
+      "ats": "workday",
+      "tenant": "fmr",
+      "wd_host": "wd1",
+      "site": "FidelityCareers",
+      "location_filter": ["Durham", "Raleigh", "North Carolina", "RTP"]
+    },
+    {
+      "name": "Truist",
+      "ats": "workday",
+      "tenant": "truist",
+      "wd_host": "wd1",
+      "site": "Careers",
+      "location_filter": ["Raleigh", "North Carolina"]
+    },
+    {
+      "name": "Pendo",
+      "ats": "greenhouse",
+      "token": "pendo",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "Bandwidth",
+      "ats": "greenhouse",
+      "token": "bandwidth",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "NetApp",
+      "ats": "TODO",
+      "careers_url": "https://careers.netapp.com/",
+      "location_filter": ["Morrisville", "RTP", "North Carolina"]
+    },
+    {
+      "name": "Lenovo",
+      "ats": "TODO",
+      "careers_url": "https://jobs.lenovo.com/",
+      "location_filter": ["Morrisville", "RTP", "North Carolina"]
+    },
+    {
+      "name": "Cisco",
+      "ats": "TODO",
+      "careers_url": "https://jobs.cisco.com/",
+      "location_filter": ["RTP", "Research Triangle Park", "North Carolina"]
+    },
+    {
+      "name": "IBM",
+      "ats": "TODO",
+      "careers_url": "https://www.ibm.com/careers/",
+      "location_filter": ["RTP", "Research Triangle Park", "North Carolina"]
+    },
+    {
+      "name": "Red Hat",
+      "ats": "TODO",
+      "careers_url": "https://www.redhat.com/en/jobs",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "SAS",
+      "ats": "TODO",
+      "careers_url": "https://www.sas.com/en_us/careers.html",
+      "location_filter": ["Cary"]
+    },
+    {
+      "name": "MetLife",
+      "ats": "TODO",
+      "careers_url": "https://careers.metlife.com/",
+      "location_filter": ["Cary", "RTP", "North Carolina"]
+    },
+    {
+      "name": "First Citizens Bank",
+      "ats": "TODO",
+      "careers_url": "https://jobs.firstcitizens.com/",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "Epic Games",
+      "ats": "TODO",
+      "careers_url": "https://www.epicgames.com/site/en-US/careers",
+      "location_filter": ["Cary"]
+    },
+    {
+      "name": "Extreme Networks",
+      "ats": "TODO",
+      "careers_url": "https://www.extremenetworks.com/company/careers/",
+      "location_filter": ["RTP", "Morrisville", "North Carolina"]
+    },
+    {
+      "name": "Deloitte",
+      "ats": "TODO",
+      "careers_url": "https://apply.deloitte.com/",
+      "location_filter": ["Raleigh", "North Carolina"]
+    },
+    {
+      "name": "PwC",
+      "ats": "TODO",
+      "careers_url": "https://jobs.us.pwc.com/",
+      "location_filter": ["Raleigh", "North Carolina"]
+    },
+    {
+      "name": "EY",
+      "ats": "TODO",
+      "careers_url": "https://careers.ey.com/",
+      "location_filter": ["Raleigh", "North Carolina"]
+    },
+    {
+      "name": "KPMG",
+      "ats": "TODO",
+      "careers_url": "https://www.kpmguscareers.com/",
+      "location_filter": ["Raleigh", "North Carolina"]
+    },
+    {
+      "name": "Cognizant",
+      "ats": "TODO",
+      "careers_url": "https://careers.cognizant.com/",
+      "location_filter": ["RTP", "Morrisville", "North Carolina"]
+    },
+    {
+      "name": "GSK",
+      "ats": "TODO",
+      "careers_url": "https://jobs.gsk.com/",
+      "location_filter": ["RTP", "Research Triangle Park"]
+    },
+    {
+      "name": "Biogen",
+      "ats": "TODO",
+      "careers_url": "https://www.biogen.com/careers.html",
+      "location_filter": ["RTP", "Research Triangle Park"]
+    },
+    {
+      "name": "IQVIA",
+      "ats": "TODO",
+      "careers_url": "https://jobs.iqvia.com/",
+      "location_filter": ["Durham"]
+    },
+    {
+      "name": "Syneos Health",
+      "ats": "TODO",
+      "careers_url": "https://www.syneoshealth.com/careers",
+      "location_filter": ["Morrisville"]
+    },
+    {
+      "name": "WakeMed",
+      "ats": "TODO",
+      "careers_url": "https://www.wakemed.org/careers",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "Martin Marietta",
+      "ats": "TODO",
+      "careers_url": "https://www.martinmarietta.com/careers/",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "Advance Auto Parts",
+      "ats": "TODO",
+      "careers_url": "https://jobs.advanceautoparts.com/",
+      "location_filter": ["Raleigh"]
+    },
+    {
+      "name": "Highwoods Properties",
+      "ats": "TODO",
+      "careers_url": "https://www.highwoods.com/careers/",
+      "location_filter": ["Raleigh"]
+    }
+  ]
+}
