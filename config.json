@@ -171,8 +171,8 @@
     {
       "name": "First Citizens Bank",
       "ats": "TODO",
-      "careers_url": "https://jobs.firstcitizens.com/",
-      "notes": "Platform unclear from URL \u2014 needs manual check.",
+      "careers_url": "https://external-firstcitizens.icims.com/",
+      "notes": "Runs on iCIMS \u2014 same limitation as SAS and WakeMed. Manual check.",
       "location_filter": [
         "Raleigh"
       ]
@@ -365,6 +365,181 @@
       "notes": "Runs on SAP SuccessFactors \u2014 not yet supported.",
       "location_filter": [
         "Clayton",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Labcorp",
+      "ats": "workday",
+      "tenant": "labcorp",
+      "wd_host": "wd1",
+      "site": "External",
+      "location_filter": [
+        "Burlington",
+        "Durham",
+        "RTP",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "ICON plc",
+      "ats": "workday",
+      "tenant": "icon",
+      "wd_host": "wd3",
+      "site": "broadbean_external",
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Accenture",
+      "ats": "workday",
+      "tenant": "accenture",
+      "wd_host": "wd103",
+      "site": "AccentureCareers",
+      "location_filter": [
+        "Raleigh",
+        "RTP",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Nationwide",
+      "ats": "workday",
+      "tenant": "nationwide",
+      "wd_host": "wd1",
+      "site": "Nationwide_Career",
+      "location_filter": [
+        "Raleigh",
+        "RTP",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Fortrea",
+      "ats": "workday",
+      "tenant": "fortrea",
+      "wd_host": "wd1",
+      "site": "Fortrea",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "RTI International",
+      "ats": "TODO",
+      "careers_url": "https://careers.rti.org/",
+      "notes": "Runs on iCIMS \u2014 same limitation as SAS/WakeMed/First Citizens.",
+      "location_filter": [
+        "Durham",
+        "RTP",
+        "Research Triangle Park"
+      ]
+    },
+    {
+      "name": "Cloudflare",
+      "ats": "greenhouse",
+      "token": "cloudflare",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "Salesforce",
+      "ats": "workday",
+      "tenant": "salesforce",
+      "wd_host": "wd1",
+      "site": "External_Career_Site",
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Deutsche Bank",
+      "ats": "workday",
+      "tenant": "db",
+      "wd_host": "wd3",
+      "site": "DBWebsite",
+      "location_filter": [
+        "Cary"
+      ]
+    },
+    {
+      "name": "Plaid",
+      "ats": "lever",
+      "slug": "plaid",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Raleigh-Durham"
+      ]
+    },
+    {
+      "name": "Novartis",
+      "ats": "workday",
+      "tenant": "novartis",
+      "wd_host": "wd3",
+      "site": "Novartis_Careers",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "Parexel",
+      "ats": "workday",
+      "tenant": "parexel",
+      "wd_host": "wd1",
+      "site": "Parexel_External_Careers",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "Rocket Software",
+      "ats": "workday",
+      "tenant": "rocket",
+      "wd_host": "wd5",
+      "site": "rocket_careers",
+      "location_filter": [
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Commercetools",
+      "ats": "greenhouse",
+      "token": "commercetools",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "Infosys",
+      "ats": "TODO",
+      "careers_url": "https://digitalcareers.infosys.com/",
+      "notes": "Custom platform, not clearly Greenhouse/Lever/Workday. Real Raleigh presence with data roles.",
+      "location_filter": [
+        "Raleigh",
+        "Cary"
+      ]
+    },
+    {
+      "name": "LendingTree",
+      "ats": "TODO",
+      "careers_url": "https://www.lendingtree.com/company/careers/",
+      "notes": "Charlotte-based, not Triangle \u2014 lower priority. Platform unconfirmed.",
+      "location_filter": [
+        "Charlotte",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "SecureWorks",
+      "ats": "TODO",
+      "careers_url": "https://www.secureworks.com/about/careers",
+      "notes": "Atlanta-based, no confirmed NC presence \u2014 low priority.",
+      "location_filter": [
         "North Carolina"
       ]
     }
