@@ -149,10 +149,53 @@ def fetch_lever(company):
     return jobs
 
 
+def fetch_ashby(company):
+    """Ashby exposes a public, no-auth JSON API per company job-board slug."""
+    slug = company["slug"]
+    url = f"https://api.ashbyhq.com/posting-api/job-board/{slug}"
+    resp = requests.get(url, headers=HEADERS, timeout=20)
+    resp.raise_for_status()
+    data = resp.json()
+
+    jobs = []
+    for j in data.get("jobs", []):
+        loc = j.get("location") or j.get("locationName") or ""
+        jobs.append({
+            "id": f"ashby-{slug}-{j.get('id', j.get('jobId', j.get('title')))}",
+            "title": j.get("title", ""),
+            "location": loc,
+            "url": j.get("jobUrl") or j.get("applyUrl", ""),
+            "description": strip_html(j.get("descriptionHtml") or j.get("description", "")),
+        })
+    return jobs
+
+
+def fetch_workable(company):
+    """Workable exposes a public, no-auth JSON widget API per company account slug."""
+    slug = company["slug"]
+    url = f"https://apply.workable.com/api/v1/widget/accounts/{slug}"
+    resp = requests.get(url, headers=HEADERS, timeout=20)
+    resp.raise_for_status()
+    data = resp.json()
+
+    jobs = []
+    for j in data.get("jobs", []):
+        jobs.append({
+            "id": f"workable-{slug}-{j.get('shortcode', j.get('title'))}",
+            "title": j.get("title", ""),
+            "location": j.get("location", {}).get("location_str", "") if isinstance(j.get("location"), dict) else str(j.get("location", "")),
+            "url": j.get("url", ""),
+            "description": strip_html(j.get("description", "")),
+        })
+    return jobs
+
+
 FETCHERS = {
     "greenhouse": fetch_greenhouse,
     "workday": fetch_workday,
     "lever": fetch_lever,
+    "ashby": fetch_ashby,
+    "workable": fetch_workable,
 }
 
 
@@ -165,12 +208,18 @@ def strip_html(text):
 
 
 def matches_keywords(job, keywords):
-    # Match on the TITLE only. Matching against full descriptions catches
-    # boilerplate (EEO statements, privacy footers) that mentions generic
-    # words like "data" in every posting regardless of role — that's what
-    # was pulling in daycare and network engineer postings.
-    title = job["title"].lower()
-    return any(kw.lower().strip() in title for kw in keywords)
+    # Match on the TITLE only, using word boundaries so short tokens (like
+    # "bi") match as whole words instead of needing hacks like a trailing
+    # space, and don't accidentally match inside unrelated words.
+    title = job["title"]
+    for kw in keywords:
+        kw = kw.strip()
+        if not kw:
+            continue
+        pattern = r"\b" + re.escape(kw) + r"\b"
+        if re.search(pattern, title, re.IGNORECASE):
+            return True
+    return False
 
 
 def matches_location(job, location_filter):
