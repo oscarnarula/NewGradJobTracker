@@ -16,6 +16,7 @@ import smtplib
 import sys
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from xml.etree import ElementTree
 
 import requests
 
@@ -152,6 +153,74 @@ def fetch_workday_job_description(tenant, wd_host, site, external_path):
         return ""  # if this fails, tagging just falls back to title-only, same as before
 
 
+def fetch_icims_job_detail(job_url, headers):
+    """
+    Fetch location + full description for a single iCIMS job. iCIMS doesn't
+    put location in the sitemap, only in the individual job page — so this
+    is only called for jobs that already matched on title, same pattern as
+    the Workday description enrichment.
+    """
+    try:
+        resp = requests.get(job_url, headers=headers, timeout=20)
+        resp.raise_for_status()
+        text = strip_html(resp.text)
+        text = re.sub(r"\s+", " ", text).strip()
+
+        location = ""
+        loc_match = re.search(r"Job Locations?\s*(.+?)\s*Job Category", text)
+        if loc_match:
+            location = loc_match.group(1).strip()
+
+        description = ""
+        desc_match = re.search(r"Job Description\s*(.+?)\s*(Options|Share on your newsfeed|$)", text)
+        if desc_match:
+            description = desc_match.group(1).strip()
+
+        return location, description
+    except Exception:
+        return "", ""
+
+
+def fetch_icims(company):
+    """
+    iCIMS has no public JSON API, but every iCIMS career site auto-generates
+    a sitemap.xml listing every job posting URL — and the URL itself encodes
+    the job title as a slug (e.g. .../jobs/123/data-analyst/job). That gives
+    us every job title for the price of one request, without needing a full
+    browser. Location and full description are fetched afterward, only for
+    postings that already matched a keyword (same enrichment pattern used
+    for Workday).
+    """
+    subdomain = company["subdomain"]
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    }
+    resp = requests.get(f"https://{subdomain}/sitemap.xml", headers=headers, timeout=20)
+    resp.raise_for_status()
+
+    root = ElementTree.fromstring(resp.content)
+    urls = [el.text for el in root.iter() if el.tag.endswith("loc") and el.text]
+
+    jobs = []
+    pattern = re.compile(r"/jobs/(\d+)/([^/]+)/job")
+    for url in urls:
+        m = pattern.search(url)
+        if not m:
+            continue  # skip non-job URLs (intro page, search page, etc.)
+        req_id, slug = m.groups()
+        title = slug.replace("-", " ").strip()
+        title = (title[:1].upper() + title[1:]) if title else title
+        jobs.append({
+            "id": f"icims-{subdomain}-{req_id}",
+            "title": title,
+            "location": "",  # unknown until enrichment — see fetch_icims_job_detail
+            "url": url,
+            "description": "",
+        })
+    return jobs
+
+
 def fetch_lever(company):
     """Lever also exposes a clean public JSON API per company slug."""
     slug = company["slug"]
@@ -220,6 +289,7 @@ FETCHERS = {
     "lever": fetch_lever,
     "ashby": fetch_ashby,
     "workable": fetch_workable,
+    "icims": fetch_icims,
 }
 
 
@@ -347,20 +417,33 @@ def main():
             if not full_report and job["id"] in seen:
                 continue  # already notified about this one
 
-            if not matches_location(job, company.get("location_filter")):
-                continue
+            if ats == "icims":
+                # iCIMS doesn't give us location up front — only fetch the
+                # detail page (location + description) once a title already
+                # matched a keyword, to avoid fetching every single posting.
+                if not matches_keywords(job, keywords):
+                    continue
+                headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                          "Chrome/124.0.0.0 Safari/537.36"}
+                job["location"], job["description"] = fetch_icims_job_detail(job["url"], headers)
+                if not matches_location(job, company.get("location_filter")):
+                    continue
+            else:
+                if not matches_location(job, company.get("location_filter")):
+                    continue
 
-            if not matches_keywords(job, keywords):
-                continue
+                if not matches_keywords(job, keywords):
+                    continue
 
-            # Enrich with the full description now, only for this one matched
-            # job — this is what lets us catch "3+ years" style requirements
-            # that live in the description, not the title, for Workday
-            # companies (their listing view doesn't include description text).
-            if ats == "workday" and not job.get("description") and job.get("path"):
-                job["description"] = fetch_workday_job_description(
-                    company["tenant"], company["wd_host"], company["site"], job["path"]
-                )
+                # Enrich with the full description now, only for this one matched
+                # job — this is what lets us catch "3+ years" style requirements
+                # that live in the description, not the title, for Workday
+                # companies (their listing view doesn't include description text).
+                if ats == "workday" and not job.get("description") and job.get("path"):
+                    job["description"] = fetch_workday_job_description(
+                        company["tenant"], company["wd_host"], company["site"], job["path"]
+                    )
 
             tag = tag_seniority(job, entry_signals, exp_signals)
             new_matches.append({
