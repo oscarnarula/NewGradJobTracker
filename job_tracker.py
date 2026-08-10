@@ -92,9 +92,18 @@ def fetch_workday(company):
     stall_count = 0
     while True:
         payload = {"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""}
-        resp = session.post(base, json=payload, timeout=20)
-        resp.raise_for_status()
-        data = resp.json()
+        # A single slow/flaky request shouldn't sink the whole company —
+        # retry once before giving up (this is what fixed Wells Fargo's
+        # one-off timeout on an otherwise correctly-configured tenant).
+        for attempt in range(2):
+            try:
+                resp = session.post(base, json=payload, timeout=30)
+                resp.raise_for_status()
+                data = resp.json()
+                break
+            except requests.RequestException:
+                if attempt == 1:
+                    raise
         postings = data.get("jobPostings", [])
         if reported_total is None:
             reported_total = data.get("total", 0)
@@ -190,13 +199,27 @@ def fetch_icims(company):
     browser. Location and full description are fetched afterward, only for
     postings that already matched a keyword (same enrichment pattern used
     for Workday).
+
+    Like Workday, iCIMS's bot defenses will return a bare 405 to a request
+    that doesn't look like it came from a real browser session — so this
+    uses the same fix: a persistent session that visits the human-facing
+    page first to pick up cookies before requesting the sitemap.
     """
     subdomain = company["subdomain"]
-    headers = {
+    session = requests.Session()
+    session.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    }
-    resp = requests.get(f"https://{subdomain}/sitemap.xml", headers=headers, timeout=20)
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": f"https://{subdomain}/",
+    })
+
+    try:
+        session.get(f"https://{subdomain}/jobs", timeout=20)
+    except requests.RequestException:
+        pass  # not fatal, worth trying the sitemap regardless
+
+    resp = session.get(f"https://{subdomain}/sitemap.xml", timeout=20)
     resp.raise_for_status()
 
     root = ElementTree.fromstring(resp.content)
