@@ -1,19 +1,57 @@
 {
   "keywords": [
-    "analyst", "data", "business intelligence", "bi ", "insights",
-    "reporting", "operations analyst", "strategy analyst", "research analyst",
-    "market analyst", "product analyst", "financial analyst", "analytics"
+    "analyst",
+    "data",
+    "business intelligence",
+    "bi ",
+    "insights",
+    "reporting",
+    "operations analyst",
+    "strategy analyst",
+    "research analyst",
+    "market analyst",
+    "product analyst",
+    "financial analyst",
+    "analytics"
   ],
   "entry_level_signals": [
-    "entry", "entry-level", "entry level", "new grad", "new graduate",
-    "university grad", "campus", "associate", "analyst i ", "analyst i,",
-    "level 1", "l1", "rotational", "development program", "leap",
-    "0-2 years", "0-1 year", "1-2 years", "recent graduate"
+    "entry",
+    "entry-level",
+    "entry level",
+    "new grad",
+    "new graduate",
+    "university grad",
+    "campus",
+    "associate",
+    "analyst i ",
+    "analyst i,",
+    "level 1",
+    "l1",
+    "rotational",
+    "development program",
+    "leap",
+    "0-2 years",
+    "0-1 year",
+    "1-2 years",
+    "recent graduate"
   ],
   "experienced_signals": [
-    "senior", "sr.", "sr ", "ii ", "iii ", "iv ", "lead ", "principal",
-    "manager", "director", "5+ years", "7+ years", "10+ years",
-    "3-5 years", "minimum 5", "minimum 7"
+    "senior",
+    "sr.",
+    "sr ",
+    "ii ",
+    "iii ",
+    "iv ",
+    "lead ",
+    "principal",
+    "manager",
+    "director",
+    "5+ years",
+    "7+ years",
+    "10+ years",
+    "3-5 years",
+    "minimum 5",
+    "minimum 7"
   ],
   "companies": [
     {
@@ -22,7 +60,12 @@
       "tenant": "fmr",
       "wd_host": "wd1",
       "site": "FidelityCareers",
-      "location_filter": ["Durham", "Raleigh", "North Carolina", "RTP"]
+      "location_filter": [
+        "Durham",
+        "Raleigh",
+        "North Carolina",
+        "RTP"
+      ]
     },
     {
       "name": "Truist",
@@ -30,161 +73,257 @@
       "tenant": "truist",
       "wd_host": "wd1",
       "site": "Careers",
-      "location_filter": ["Raleigh", "North Carolina"]
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ]
     },
     {
       "name": "Pendo",
       "ats": "greenhouse",
       "token": "pendo",
-      "location_filter": ["Raleigh"]
+      "location_filter": [
+        "Raleigh"
+      ]
     },
     {
       "name": "Bandwidth",
       "ats": "greenhouse",
       "token": "bandwidth",
-      "location_filter": ["Raleigh"]
+      "location_filter": [
+        "Raleigh"
+      ]
     },
     {
       "name": "NetApp",
       "ats": "TODO",
       "careers_url": "https://careers.netapp.com/",
-      "notes": "Runs on Eightfold — not yet supported.",
-      "location_filter": ["Morrisville", "RTP", "North Carolina"]
+      "notes": "Runs on Eightfold \u2014 not yet supported.",
+      "location_filter": [
+        "Morrisville",
+        "RTP",
+        "North Carolina"
+      ]
     },
     {
       "name": "Lenovo",
       "ats": "TODO",
       "careers_url": "https://jobs.lenovo.com/",
-      "notes": "Runs on Avature — no documented public API, needs manual check or a fragile HTML scraper.",
-      "location_filter": ["Morrisville", "RTP", "North Carolina"]
+      "notes": "Runs on Avature \u2014 no documented public API, needs manual check or a fragile HTML scraper.",
+      "location_filter": [
+        "Morrisville",
+        "RTP",
+        "North Carolina"
+      ]
     },
     {
       "name": "Cisco",
-      "ats": "TODO",
-      "careers_url": "https://jobs.cisco.com/",
-      "location_filter": ["RTP", "Research Triangle Park", "North Carolina"]
+      "ats": "workday",
+      "tenant": "cisco",
+      "wd_host": "wd5",
+      "site": "Cisco_Careers",
+      "location_filter": [
+        "RTP",
+        "Research Triangle Park",
+        "North Carolina"
+      ]
     },
     {
       "name": "IBM",
       "ats": "TODO",
       "careers_url": "https://www.ibm.com/careers/",
-      "location_filter": ["RTP", "Research Triangle Park", "North Carolina"]
+      "location_filter": [
+        "RTP",
+        "Research Triangle Park",
+        "North Carolina"
+      ]
     },
     {
       "name": "Red Hat",
-      "ats": "TODO",
-      "careers_url": "https://www.redhat.com/en/jobs",
-      "location_filter": ["Raleigh"]
+      "ats": "workday",
+      "location_filter": [
+        "Raleigh"
+      ],
+      "tenant": "redhat",
+      "wd_host": "wd5",
+      "site": "Jobs"
     },
     {
       "name": "SAS",
       "ats": "TODO",
       "careers_url": "https://www.sas.com/en_us/careers.html",
-      "location_filter": ["Cary"]
+      "location_filter": [
+        "Cary"
+      ],
+      "notes": "Runs on iCIMS \u2014 not yet supported."
     },
     {
       "name": "MetLife",
       "ats": "TODO",
       "careers_url": "https://www.metlifecareers.com/",
-      "notes": "Runs on Avature — same limitation as Lenovo.",
-      "location_filter": ["Cary", "RTP", "North Carolina"]
+      "notes": "Runs on Avature \u2014 same limitation as Lenovo.",
+      "location_filter": [
+        "Cary",
+        "RTP",
+        "North Carolina"
+      ]
     },
     {
       "name": "First Citizens Bank",
       "ats": "TODO",
       "careers_url": "https://jobs.firstcitizens.com/",
-      "notes": "Platform unclear from URL — needs manual check.",
-      "location_filter": ["Raleigh"]
+      "notes": "Platform unclear from URL \u2014 needs manual check.",
+      "location_filter": [
+        "Raleigh"
+      ]
     },
     {
       "name": "Epic Games",
       "ats": "greenhouse",
       "token": "epicgames",
-      "location_filter": ["Cary"]
+      "location_filter": [
+        "Cary"
+      ]
     },
     {
       "name": "Extreme Networks",
       "ats": "lever",
       "slug": "extremenetworks",
-      "location_filter": ["RTP", "Morrisville", "North Carolina"]
+      "location_filter": [
+        "RTP",
+        "Morrisville",
+        "North Carolina"
+      ]
     },
     {
       "name": "Deloitte",
       "ats": "TODO",
       "careers_url": "https://apply.deloitte.com/",
-      "location_filter": ["Raleigh", "North Carolina"]
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ],
+      "notes": "Runs on Phenom \u2014 not yet supported."
     },
     {
       "name": "PwC",
       "ats": "TODO",
       "careers_url": "https://jobs.us.pwc.com/",
-      "location_filter": ["Raleigh", "North Carolina"]
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ],
+      "notes": "Platform not confirmed \u2014 needs manual check."
     },
     {
       "name": "EY",
       "ats": "TODO",
       "careers_url": "https://careers.ey.com/",
-      "location_filter": ["Raleigh", "North Carolina"]
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ],
+      "notes": "Platform not confirmed \u2014 needs manual check."
     },
     {
       "name": "KPMG",
       "ats": "TODO",
       "careers_url": "https://www.kpmguscareers.com/",
-      "location_filter": ["Raleigh", "North Carolina"]
+      "location_filter": [
+        "Raleigh",
+        "North Carolina"
+      ],
+      "notes": "Platform not confirmed \u2014 needs manual check."
     },
     {
       "name": "Cognizant",
       "ats": "TODO",
       "careers_url": "https://careers.cognizant.com/",
-      "location_filter": ["RTP", "Morrisville", "North Carolina"]
+      "location_filter": [
+        "RTP",
+        "Morrisville",
+        "North Carolina"
+      ],
+      "notes": "Runs on Taleo/Phenom \u2014 not yet supported."
     },
     {
       "name": "GSK",
-      "ats": "TODO",
-      "careers_url": "https://jobs.gsk.com/",
-      "location_filter": ["RTP", "Research Triangle Park"]
+      "ats": "workday",
+      "location_filter": [
+        "RTP",
+        "Research Triangle Park"
+      ],
+      "tenant": "gsk",
+      "wd_host": "wd5",
+      "site": "GSKCareers"
     },
     {
       "name": "Biogen",
-      "ats": "TODO",
-      "careers_url": "https://www.biogen.com/careers.html",
-      "location_filter": ["RTP", "Research Triangle Park"]
+      "ats": "workday",
+      "location_filter": [
+        "RTP",
+        "Research Triangle Park"
+      ],
+      "tenant": "biibhr",
+      "wd_host": "wd3",
+      "site": "external"
     },
     {
       "name": "IQVIA",
-      "ats": "TODO",
-      "careers_url": "https://jobs.iqvia.com/",
-      "location_filter": ["Durham"]
+      "ats": "workday",
+      "location_filter": [
+        "Durham"
+      ],
+      "tenant": "iqvia",
+      "wd_host": "wd1",
+      "site": "IQVIA"
     },
     {
       "name": "Syneos Health",
-      "ats": "TODO",
-      "careers_url": "https://www.syneoshealth.com/careers",
-      "location_filter": ["Morrisville"]
+      "ats": "workday",
+      "location_filter": [
+        "Morrisville"
+      ],
+      "tenant": "syneoshealth",
+      "wd_host": "wd12",
+      "site": "Syneos_Health_External_Site"
     },
     {
       "name": "WakeMed",
       "ats": "TODO",
       "careers_url": "https://www.wakemed.org/careers",
-      "location_filter": ["Raleigh"]
+      "location_filter": [
+        "Raleigh"
+      ],
+      "notes": "Runs on iCIMS \u2014 not yet supported."
     },
     {
       "name": "Martin Marietta",
       "ats": "TODO",
       "careers_url": "https://www.martinmarietta.com/careers/",
-      "location_filter": ["Raleigh"]
+      "location_filter": [
+        "Raleigh"
+      ],
+      "notes": "Runs on Jobvite \u2014 not yet supported."
     },
     {
       "name": "Advance Auto Parts",
-      "ats": "TODO",
-      "careers_url": "https://jobs.advanceautoparts.com/",
-      "location_filter": ["Raleigh"]
+      "ats": "workday",
+      "location_filter": [
+        "Raleigh"
+      ],
+      "tenant": "advanceauto",
+      "wd_host": "wd5",
+      "site": "AdvanceExternalCareers"
     },
     {
       "name": "Highwoods Properties",
       "ats": "TODO",
       "careers_url": "https://www.highwoods.com/careers/",
-      "location_filter": ["Raleigh"]
+      "location_filter": [
+        "Raleigh"
+      ],
+      "notes": "Platform unclear, and very low volume (~6-8 open roles total) \u2014 low priority."
     }
   ]
 }
