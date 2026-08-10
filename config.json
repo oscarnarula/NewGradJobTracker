@@ -296,12 +296,28 @@
     },
     {
       "name": "SAS",
-      "ats": "TODO",
-      "careers_url": "https://www.sas.com/en_us/careers.html",
+      "ats": "icims",
       "location_filter": [
-        "Cary"
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina"
       ],
-      "notes": "Runs on iCIMS \u2014 not yet supported."
+      "subdomain": "globalcareers-sas.icims.com"
     },
     {
       "name": "MetLife",
@@ -316,12 +332,28 @@
     },
     {
       "name": "First Citizens Bank",
-      "ats": "TODO",
-      "careers_url": "https://external-firstcitizens.icims.com/",
-      "notes": "Runs on iCIMS \u2014 same limitation as SAS and WakeMed. Manual check.",
+      "ats": "icims",
       "location_filter": [
-        "Raleigh"
-      ]
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina"
+      ],
+      "subdomain": "external-firstcitizens.icims.com"
     },
     {
       "name": "Epic Games",
@@ -1009,6 +1041,51 @@
       "notes": "Atlanta-based, no confirmed NC presence \u2014 low priority.",
       "location_filter": [
         "North Carolina"
+      ]
+    },
+    {
+      "name": "Wells Fargo",
+      "ats": "workday",
+      "tenant": "wf",
+      "wd_host": "wd1",
+      "site": "WellsFargoJobs",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Merck",
+      "ats": "TODO",
+      "careers_url": "https://jobs.merck.com/us/en",
+      "notes": "Custom platform, not Greenhouse/Lever/Workday. Confirmed Durham manufacturing site.",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "Thermo Fisher Scientific",
+      "ats": "TODO",
+      "careers_url": "https://jobs.thermofisher.com/",
+      "notes": "Custom platform, not Greenhouse/Lever/Workday. Confirmed Morrisville site.",
+      "location_filter": [
+        "Morrisville"
       ]
     }
   ]
