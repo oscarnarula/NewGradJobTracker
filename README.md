@@ -119,3 +119,26 @@ Everything's in `config.json`:
 Nothing here filters postings *out* — it only adds keyword matching (which
 jobs get emailed at all) and tagging (a label in the email). If you want it
 looser, just add more keywords.
+
+## How the "likely entry-level / experienced / unclear" tag actually works
+
+The tag is based on scanning text for the phrases in `entry_level_signals`
+and `experienced_signals`. What text gets scanned depends on the platform:
+
+- **Greenhouse, Lever, Ashby, Workable**: the full job description is always
+  available from the initial fetch, so tagging considers the whole posting.
+- **Workday**: the initial company-wide listing only includes job *titles*,
+  not descriptions — fetching every description up front would mean one
+  extra request per job, and Workday companies often have hundreds to
+  thousands of postings, so that's too slow to do unconditionally. Instead,
+  the full description is fetched *only* for postings that already matched
+  your keywords (a handful per run, not thousands) — so tagging on a
+  matched Workday posting is just as accurate as any other platform.
+
+**"unclear (no signal)" means no signal phrase was found in whatever text
+was actually scanned.** For a genuine no-signal posting, that's exactly
+right. But if you're looking at an older email from before this description
+fetch was added, a Workday "no signal" tag might just mean the title alone
+didn't contain a signal phrase — the description was never checked. This
+doesn't apply going forward, since matched jobs now always get their
+description fetched regardless of platform.
