@@ -324,6 +324,49 @@
         "Raleigh"
       ],
       "notes": "Platform unclear, and very low volume (~6-8 open roles total) \u2014 low priority."
+    },
+    {
+      "name": "Wolfspeed",
+      "ats": "workday",
+      "tenant": "cree",
+      "wd_host": "wd5",
+      "site": "EXT",
+      "location_filter": [
+        "Durham"
+      ]
+    },
+    {
+      "name": "BD (Becton Dickinson)",
+      "ats": "workday",
+      "tenant": "bdx",
+      "wd_host": "wd1",
+      "site": "EXTERNAL_CAREER_SITE_USA",
+      "location_filter": [
+        "Durham",
+        "North Carolina",
+        "RTP"
+      ]
+    },
+    {
+      "name": "Blue Cross Blue Shield NC",
+      "ats": "workday",
+      "tenant": "bcbsnc",
+      "wd_host": "wd5",
+      "site": "BCBSNC",
+      "location_filter": [
+        "Durham",
+        "North Carolina"
+      ]
+    },
+    {
+      "name": "Novo Nordisk",
+      "ats": "TODO",
+      "careers_url": "https://careers.novonordisk.com/",
+      "notes": "Runs on SAP SuccessFactors \u2014 not yet supported.",
+      "location_filter": [
+        "Clayton",
+        "North Carolina"
+      ]
     }
   ]
 }
