@@ -74,6 +74,18 @@ Same idea — if the URL becomes `jobs.lever.co/companyname`, that's Lever.
 { "name": "Example Co", "ats": "lever", "slug": "companyname" }
 ```
 
+**Check if it's Ashby:**
+Look for a URL like `jobs.ashbyhq.com/companyname`. Grab the slug after the last `/`.
+```json
+{ "name": "Example Co", "ats": "ashby", "slug": "companyname" }
+```
+
+**Check if it's Workable:**
+Look for a URL like `apply.workable.com/companyname` or `companyname.workable.com`. Grab the slug.
+```json
+{ "name": "Example Co", "ats": "workable", "slug": "companyname" }
+```
+
 **Check if it's Workday:**
 If the URL looks like `companyname.wd1.myworkdayjobs.com/SiteName` (the
 `wd` number varies: wd1, wd3, wd5...), that's Workday. You need three pieces:
