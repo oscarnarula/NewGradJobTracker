@@ -283,13 +283,14 @@ def save_json(path, data):
         json.dump(data, f, indent=2)
 
 
-def send_email(new_matches):
+def send_email(new_matches, full_report=False):
     email_from = os.environ["EMAIL_ADDRESS"]
     email_to = os.environ.get("EMAIL_TO", email_from)
     app_password = os.environ["EMAIL_APP_PASSWORD"]
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Job Tracker: {len(new_matches)} new posting(s)"
+    subject_prefix = "Job Tracker FULL REPORT" if full_report else "Job Tracker"
+    msg["Subject"] = f"{subject_prefix}: {len(new_matches)} posting(s)"
     msg["From"] = email_from
     msg["To"] = email_to
 
@@ -313,6 +314,11 @@ def send_email(new_matches):
 def main():
     config = load_json(CONFIG_PATH, {})
     seen = load_json(SEEN_PATH, {})  # {job_id: true}
+
+    full_report = os.environ.get("FULL_REPORT", "false").lower() == "true"
+    if full_report:
+        print("[mode] FULL REPORT — showing every current match, ignoring seen history. "
+              "seen_jobs.json will NOT be updated this run.")
 
     keywords = config.get("keywords", [])
     entry_signals = config.get("entry_level_signals", [])
@@ -338,7 +344,7 @@ def main():
         print(f"[OK] {name}: {len(jobs)} total postings fetched")
 
         for job in jobs:
-            if job["id"] in seen:
+            if not full_report and job["id"] in seen:
                 continue  # already notified about this one
 
             if not matches_location(job, company.get("location_filter")):
@@ -367,12 +373,16 @@ def main():
             seen[job["id"]] = True
 
     if new_matches:
-        print(f"Found {len(new_matches)} new matching posting(s).")
-        send_email(new_matches)
+        label = "matching posting(s)" if full_report else "new matching posting(s)"
+        print(f"Found {len(new_matches)} {label}.")
+        send_email(new_matches, full_report=full_report)
     else:
-        print("No new matching postings this run.")
+        print("No matching postings this run." if full_report else "No new matching postings this run.")
 
-    save_json(SEEN_PATH, seen)
+    if not full_report:
+        save_json(SEEN_PATH, seen)
+    else:
+        print("[mode] FULL REPORT complete — seen_jobs.json left untouched.")
 
 
 if __name__ == "__main__":
