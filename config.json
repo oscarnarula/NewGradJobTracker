@@ -377,16 +377,6 @@
       "notes": "Platform unclear, and very low volume (~6-8 open roles total) \u2014 low priority."
     },
     {
-      "name": "Wolfspeed",
-      "ats": "workday",
-      "tenant": "cree",
-      "wd_host": "wd5",
-      "site": "EXT",
-      "location_filter": [
-        "Durham"
-      ]
-    },
-    {
       "name": "BD (Becton Dickinson)",
       "ats": "workday",
       "tenant": "bdx",
@@ -516,17 +506,6 @@
       "location_filter": [
         "Cary"
       ]
-    },
-    {
-      "name": "Plaid",
-      "ats": "lever",
-      "slug": "plaid",
-      "location_filter": [
-        "Raleigh",
-        "Durham",
-        "Raleigh-Durham"
-      ],
-      "notes": "Lever slug confirmed correct, but their public postings API returns empty \u2014 likely disabled on their end even though the website works. May not be fixable."
     },
     {
       "name": "Novartis",
