@@ -86,6 +86,19 @@ Look for a URL like `apply.workable.com/companyname` or `companyname.workable.co
 { "name": "Example Co", "ats": "workable", "slug": "companyname" }
 ```
 
+**Check if it's iCIMS:**
+If the URL becomes something like `careers-companyname.icims.com` or a
+similar `*.icims.com` subdomain, that's iCIMS. iCIMS doesn't have a public
+JSON API, but it auto-generates a `sitemap.xml` that lists every job — the
+script uses that instead. Grab the subdomain (the part before `.icims.com`,
+including the prefix):
+```json
+{ "name": "Example Co", "ats": "icims", "subdomain": "careers-companyname.icims.com" }
+```
+Note: some companies use a branded domain (like `jobs.company.com`) that's
+actually iCIMS underneath — check if `https://jobs.company.com/sitemap.xml`
+loads and contains `/jobs/.../job` style URLs before assuming it won't work.
+
 **Check if it's Workday:**
 If the URL looks like `companyname.wd1.myworkdayjobs.com/SiteName` (the
 `wd` number varies: wd1, wd3, wd5...), that's Workday. You need three pieces:
