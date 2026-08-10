@@ -116,7 +116,8 @@ def fetch_workday(company):
                 "title": p.get("title", ""),
                 "location": p.get("locationsText", ""),
                 "url": f"{site_url}{path}",
-                "description": "",  # Workday list view doesn't include full JD; title/location is enough to match on
+                "path": path,  # kept so we can fetch the full description later, only for matches
+                "description": "",  # Workday list view doesn't include full JD; fetched later only for matches
             })
 
         offset += limit
@@ -126,6 +127,29 @@ def fetch_workday(company):
             break
 
     return jobs
+
+
+def fetch_workday_job_description(tenant, wd_host, site, external_path):
+    """
+    Fetch the full description for a single Workday job posting. Only called
+    for jobs that already matched on title — fetching this for every posting
+    up front would mean one extra request per job (hundreds to thousands per
+    company), which is far too slow to do unconditionally.
+    """
+    url = f"https://{tenant}.{wd_host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/job{external_path}"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+    }
+    try:
+        resp = requests.get(url, headers=headers, timeout=20)
+        resp.raise_for_status()
+        data = resp.json()
+        desc_html = data.get("jobPostingInfo", {}).get("jobDescription", "")
+        return strip_html(desc_html)
+    except Exception:
+        return ""  # if this fails, tagging just falls back to title-only, same as before
 
 
 def fetch_lever(company):
@@ -322,6 +346,15 @@ def main():
 
             if not matches_keywords(job, keywords):
                 continue
+
+            # Enrich with the full description now, only for this one matched
+            # job — this is what lets us catch "3+ years" style requirements
+            # that live in the description, not the title, for Workday
+            # companies (their listing view doesn't include description text).
+            if ats == "workday" and not job.get("description") and job.get("path"):
+                job["description"] = fetch_workday_job_description(
+                    company["tenant"], company["wd_host"], company["site"], job["path"]
+                )
 
             tag = tag_seniority(job, entry_signals, exp_signals)
             new_matches.append({
