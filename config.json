@@ -128,7 +128,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -155,7 +165,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -180,7 +200,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -205,29 +235,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "NetApp",
-      "ats": "TODO",
-      "careers_url": "https://careers.netapp.com/",
-      "notes": "Runs on Eightfold \u2014 not yet supported.",
-      "location_filter": [
-        "Morrisville",
-        "RTP",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "Lenovo",
-      "ats": "TODO",
-      "careers_url": "https://jobs.lenovo.com/",
-      "notes": "Runs on Avature \u2014 no documented public API, needs manual check or a fragile HTML scraper.",
-      "location_filter": [
-        "Morrisville",
-        "RTP",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -254,17 +272,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "IBM",
-      "ats": "TODO",
-      "careers_url": "https://www.ibm.com/careers/",
-      "location_filter": [
-        "RTP",
-        "Research Triangle Park",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -288,72 +306,21 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "redhat",
       "wd_host": "wd5",
       "site": "Jobs"
-    },
-    {
-      "name": "SAS",
-      "ats": "icims",
-      "location_filter": [
-        "Raleigh",
-        "Durham",
-        "Cary",
-        "Chapel Hill",
-        "Morrisville",
-        "Apex",
-        "Wake Forest",
-        "Garner",
-        "Holly Springs",
-        "Fuquay-Varina",
-        "Knightdale",
-        "Wendell",
-        "Clayton",
-        "RTP",
-        "Research Triangle Park",
-        "Triangle",
-        "RDU",
-        "North Carolina"
-      ],
-      "subdomain": "globalcareers-sas.icims.com"
-    },
-    {
-      "name": "MetLife",
-      "ats": "TODO",
-      "careers_url": "https://www.metlifecareers.com/",
-      "notes": "Runs on Avature \u2014 same limitation as Lenovo.",
-      "location_filter": [
-        "Cary",
-        "RTP",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "First Citizens Bank",
-      "ats": "icims",
-      "location_filter": [
-        "Raleigh",
-        "Durham",
-        "Cary",
-        "Chapel Hill",
-        "Morrisville",
-        "Apex",
-        "Wake Forest",
-        "Garner",
-        "Holly Springs",
-        "Fuquay-Varina",
-        "Knightdale",
-        "Wendell",
-        "Clayton",
-        "RTP",
-        "Research Triangle Park",
-        "Triangle",
-        "RDU",
-        "North Carolina"
-      ],
-      "subdomain": "external-firstcitizens.icims.com"
     },
     {
       "name": "Epic Games",
@@ -377,7 +344,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -402,59 +379,18 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
-    },
-    {
-      "name": "Deloitte",
-      "ats": "TODO",
-      "careers_url": "https://apply.deloitte.com/",
-      "location_filter": [
-        "Raleigh",
-        "North Carolina"
-      ],
-      "notes": "Runs on Phenom \u2014 not yet supported."
-    },
-    {
-      "name": "PwC",
-      "ats": "TODO",
-      "careers_url": "https://jobs.us.pwc.com/",
-      "location_filter": [
-        "Raleigh",
-        "North Carolina"
-      ],
-      "notes": "Platform not confirmed \u2014 needs manual check."
-    },
-    {
-      "name": "EY",
-      "ats": "TODO",
-      "careers_url": "https://careers.ey.com/",
-      "location_filter": [
-        "Raleigh",
-        "North Carolina"
-      ],
-      "notes": "Platform not confirmed \u2014 needs manual check."
-    },
-    {
-      "name": "KPMG",
-      "ats": "TODO",
-      "careers_url": "https://www.kpmguscareers.com/",
-      "location_filter": [
-        "Raleigh",
-        "North Carolina"
-      ],
-      "notes": "Platform not confirmed \u2014 needs manual check."
-    },
-    {
-      "name": "Cognizant",
-      "ats": "TODO",
-      "careers_url": "https://careers.cognizant.com/",
-      "location_filter": [
-        "RTP",
-        "Morrisville",
-        "North Carolina"
-      ],
-      "notes": "Runs on Taleo/Phenom \u2014 not yet supported."
     },
     {
       "name": "GSK",
@@ -477,7 +413,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "gsk",
       "wd_host": "wd5",
@@ -504,7 +450,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "biibhr",
       "wd_host": "wd3",
@@ -531,7 +487,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "iqvia",
       "wd_host": "wd1",
@@ -558,29 +524,21 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "syneoshealth",
       "wd_host": "wd12",
       "site": "Syneos_Health_External_Site"
-    },
-    {
-      "name": "WakeMed",
-      "ats": "TODO",
-      "careers_url": "https://www.wakemed.org/careers",
-      "location_filter": [
-        "Raleigh"
-      ],
-      "notes": "Runs on iCIMS \u2014 not yet supported."
-    },
-    {
-      "name": "Martin Marietta",
-      "ats": "TODO",
-      "careers_url": "https://www.martinmarietta.com/careers/",
-      "location_filter": [
-        "Raleigh"
-      ],
-      "notes": "Runs on Jobvite \u2014 not yet supported."
     },
     {
       "name": "Advance Auto Parts",
@@ -603,20 +561,21 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ],
       "tenant": "advanceauto",
       "wd_host": "wd5",
       "site": "AdvanceExternalCareers"
-    },
-    {
-      "name": "Highwoods Properties",
-      "ats": "TODO",
-      "careers_url": "https://www.highwoods.com/careers/",
-      "location_filter": [
-        "Raleigh"
-      ],
-      "notes": "Platform unclear, and very low volume (~6-8 open roles total) \u2014 low priority."
     },
     {
       "name": "BD (Becton Dickinson)",
@@ -642,7 +601,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -669,17 +638,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "Novo Nordisk",
-      "ats": "TODO",
-      "careers_url": "https://careers.novonordisk.com/",
-      "notes": "Runs on SAP SuccessFactors \u2014 not yet supported.",
-      "location_filter": [
-        "Clayton",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -707,7 +676,17 @@
         "Triangle",
         "RDU",
         "North Carolina",
-        "Burlington"
+        "Burlington",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -734,7 +713,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -761,7 +750,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -788,7 +787,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -815,19 +824,53 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
       "name": "RTI International",
-      "ats": "TODO",
-      "careers_url": "https://careers.rti.org/",
-      "notes": "Runs on iCIMS \u2014 same limitation as SAS/WakeMed/First Citizens.",
+      "ats": "icims",
       "location_filter": [
+        "Raleigh",
         "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
         "RTP",
-        "Research Triangle Park"
-      ]
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ],
+      "subdomain": "globalcareers-rtiinc.icims.com"
     },
     {
       "name": "Cloudflare",
@@ -851,7 +894,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -878,7 +931,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -905,7 +968,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -932,7 +1005,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -959,7 +1042,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -986,7 +1079,17 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
@@ -1011,37 +1114,53 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "Infosys",
-      "ats": "TODO",
-      "careers_url": "https://digitalcareers.infosys.com/",
-      "notes": "Custom platform, not clearly Greenhouse/Lever/Workday. Real Raleigh presence with data roles.",
-      "location_filter": [
-        "Raleigh",
-        "Cary"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
       "name": "LendingTree",
-      "ats": "TODO",
-      "careers_url": "https://www.lendingtree.com/company/careers/",
-      "notes": "Charlotte-based, not Triangle \u2014 lower priority. Platform unconfirmed.",
+      "ats": "greenhouse",
       "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
         "Charlotte",
-        "North Carolina"
-      ]
-    },
-    {
-      "name": "SecureWorks",
-      "ats": "TODO",
-      "careers_url": "https://www.secureworks.com/about/careers",
-      "notes": "Atlanta-based, no confirmed NC presence \u2014 low priority.",
-      "location_filter": [
-        "North Carolina"
-      ]
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ],
+      "token": "lendingtree"
     },
     {
       "name": "Wells Fargo",
@@ -1067,25 +1186,199 @@
         "Research Triangle Park",
         "Triangle",
         "RDU",
-        "North Carolina"
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
-      "name": "Merck",
-      "ats": "TODO",
-      "careers_url": "https://jobs.merck.com/us/en",
-      "notes": "Custom platform, not Greenhouse/Lever/Workday. Confirmed Durham manufacturing site.",
+      "name": "Bank of America",
+      "ats": "workday",
+      "tenant": "ghr",
+      "wd_host": "wd1",
+      "site": "Lateral-US",
+      "notes": "Site name 'Lateral-US' suggests this may be the experienced-hire portal specifically \u2014 worth checking if a separate campus/student site exists for more entry-level-focused results.",
       "location_filter": [
-        "Durham"
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     },
     {
-      "name": "Thermo Fisher Scientific",
-      "ats": "TODO",
-      "careers_url": "https://jobs.thermofisher.com/",
-      "notes": "Custom platform, not Greenhouse/Lever/Workday. Confirmed Morrisville site.",
+      "name": "Duke Energy",
+      "ats": "workday",
+      "tenant": "dukeenergy",
+      "wd_host": "wd1",
+      "site": "Search",
       "location_filter": [
-        "Morrisville"
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ]
+    },
+    {
+      "name": "Litera",
+      "ats": "workday",
+      "tenant": "litera",
+      "wd_host": "wd12",
+      "site": "Litera_Careers",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ]
+    },
+    {
+      "name": "Fira Health",
+      "ats": "ashby",
+      "slug": "fira-health",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ]
+    },
+    {
+      "name": "AvidXchange",
+      "ats": "greenhouse",
+      "token": "avidxchangeinc",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
       ]
     }
   ]
