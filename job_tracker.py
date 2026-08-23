@@ -469,6 +469,15 @@ def main():
                     )
 
             tag = tag_seniority(job, entry_signals, exp_signals)
+
+            # Optional filter: drop postings tagged "likely experienced".
+            # This never affects seen_jobs.json — a filtered-out posting is
+            # still marked seen, so it won't be re-evaluated or slip through
+            # later if the config setting changes back.
+            seen[job["id"]] = True
+            if config.get("exclude_experienced", False) and tag == "likely experienced":
+                continue
+
             new_matches.append({
                 "company": name,
                 "title": job["title"],
@@ -476,7 +485,6 @@ def main():
                 "url": job["url"],
                 "tag": tag,
             })
-            seen[job["id"]] = True
 
     if new_matches:
         label = "matching posting(s)" if full_report else "new matching posting(s)"
