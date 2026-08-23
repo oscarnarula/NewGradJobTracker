@@ -1,4 +1,5 @@
 {
+  "exclude_experienced": true,
   "keywords": [
     "analyst",
     "data",
@@ -1315,6 +1316,41 @@
       "name": "AvidXchange",
       "ats": "greenhouse",
       "token": "avidxchangeinc",
+      "location_filter": [
+        "Raleigh",
+        "Durham",
+        "Cary",
+        "Chapel Hill",
+        "Morrisville",
+        "Apex",
+        "Wake Forest",
+        "Garner",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wendell",
+        "Clayton",
+        "RTP",
+        "Research Triangle Park",
+        "Triangle",
+        "RDU",
+        "North Carolina",
+        "Charlotte",
+        "Uptown Charlotte",
+        "South End",
+        "Ballantyne",
+        "Concord",
+        "Huntersville",
+        "Matthews",
+        "Mooresville",
+        "Gastonia",
+        "Rock Hill"
+      ]
+    },
+    {
+      "name": "Flatiron Health",
+      "ats": "greenhouse",
+      "token": "flatironhealth",
       "location_filter": [
         "Raleigh",
         "Durham",
