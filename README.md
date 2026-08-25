@@ -13,11 +13,11 @@ anything once it's set up.
 
 ## How it actually works
 
-Most companies don't build their own career site from scratch — they run
+Most companies don't build their own career site from scratch, they run
 on top of a handful of platforms (Workday, Greenhouse, Lever, iCIMS, Ashby,
 Workable). A few of those platforms expose their job listings as clean,
 public data if you know where to look, which means I don't have to scrape
-or parse a rendered webpage at all — I can just ask for the data directly.
+or parse a rendered webpage at all, I can just ask for the data directly.
 
 Right now this covers 35 companies:
 - **Workday** (25 companies) — the biggest platform by far among the
