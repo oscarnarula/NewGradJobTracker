@@ -1,157 +1,96 @@
 # Job Tracker
 
-Checks career pages for the companies in `config.json`, finds postings that
-match your keywords, tags each as likely entry-level or not, and emails you
-anything new since the last check. Runs automatically every morning via
-GitHub Actions — no server needed.
+I built this because I kept missing jobs. I'd sign up for a company's
+"talent community," and weeks later I'd find a posting on their actual
+website that I never got an email about. Checking 30+ career pages by hand
+every day wasn't realistic either, so I built something to do it for me.
+
+Every morning it checks a list of companies I care about, looks for new
+postings that match what I'm actually looking for (keywords + location),
+and emails me if there's anything new. If there's nothing new, it stays
+quiet. Runs automatically through GitHub Actions, so I don't have to do
+anything once it's set up.
 
 ## How it actually works
 
-Almost every big company's "careers" page is a skin on top of one of a
-handful of applicant tracking systems (ATS): **Greenhouse**, **Lever**, or
-**Workday** are the three most common. Each of those platforms exposes the
-job list as clean JSON data if you know the URL pattern — you don't need to
-scrape/parse HTML at all. So instead of writing 25 custom scrapers, this
-script has 3 fetcher functions (one per platform), and `config.json` just
-tells it which platform + company ID to use for each company.
+Most companies don't build their own career site from scratch — they run
+on top of a handful of platforms (Workday, Greenhouse, Lever, iCIMS, Ashby,
+Workable). A few of those platforms expose their job listings as clean,
+public data if you know where to look, which means I don't have to scrape
+or parse a rendered webpage at all — I can just ask for the data directly.
 
-Every run:
-1. Pull the current job list for each configured company.
-2. Filter to jobs matching your keywords AND your location filters.
-3. Drop anything already seen in a previous run (tracked in `seen_jobs.json`).
-4. Tag what's left as "likely entry-level" / "likely experienced" / "unclear"
-   based on title and description signals — nothing gets dropped, just labeled.
-5. Email you a digest of what's new.
-6. Save the updated seen-jobs list so tomorrow's run only flags genuinely new stuff.
+Right now this covers 35 companies:
+- **Workday** (25 companies) — the biggest platform by far among the
+  companies I'm targeting
+- **Greenhouse** (8 companies)
+- **Lever** (1 company)
+- **Ashby** (1 company)
+
+Every run does the same thing, company by company:
+1. Pull the current job list.
+2. Check the job **title** against my keyword list (title only — checking
+   full descriptions caused false matches early on, more on that below).
+3. Check the location against my location list.
+4. If it's a match, tag it as likely entry-level, likely experienced, or
+   unclear, based on scanning for phrases like "senior" or "entry level."
+5. Drop anything I've already been emailed about before.
+6. Email me whatever's left.
+
+## The limitations (be honest with yourself about these)
+
+This only works for companies running on a platform I've actually built
+support for. If a company runs something else — I ran into Avature,
+Eightfold, Phenom, SAP SuccessFactors, and a handful of fully custom-built
+sites — this tool is completely blind to it. Not partially, not slower,
+just doesn't see it at all. Some of those platforms don't expose any
+public data no matter how you ask; JavaScript loads the job listings into
+the page after the fact, so there's nothing there to grab until a real
+browser opens it.
+
+iCIMS is a partial case worth calling out specifically: it *does* have a
+workaround (it auto-generates a sitemap file with every job title baked
+into the URL), but every company I actually tried it against blocked the
+automated request anyway. So the code for it exists in `job_tracker.py`,
+but nothing in `config.json` currently uses it.
+
+If a company matters to you and it's not on this list, the honest answer
+is either it's not supported yet, or it can't be — check the "how to add
+a company" section below to figure out which.
+
+## Using this for your own job search
+
+Everything you'd want to change lives in `config.json` — you shouldn't
+need to touch `job_tracker.py` unless you're changing how it behaves, not
+what it's looking for.
+
+- **`companies`** — swap this out for your own target list.
+- **`keywords`** — what has to appear in a job *title* for it to count as
+  a match. Mine are analyst/data-flavored; change these to whatever fits
+  your field.
+- **`entry_level_signals` / `experienced_signals`** — phrases used to tag
+  a posting by seniority. This is just a label, not a filter, unless you
+  turn on `exclude_experienced` (see below).
+- **`exclude_experienced`** — set this to `true` to stop getting emailed
+  about anything tagged "likely experienced." I turned this on once I
+  trusted the tagging enough.
+- **Per-company `location_filter`** — each company entry has its own list
+  of locations to match against. Change these to your city/region.
 
 ## One-time setup
 
-### 1. Create a GitHub repo
-Push these files to a new **private** repo (Settings → make it private,
-since your job search details don't need to be public).
-
-### 2. Gmail App Password (so the script can send email as you)
-Regular Gmail passwords won't work for this — you need an "app password":
-1. Go to https://myaccount.google.com/apppasswords (requires 2-Step Verification turned on)
-2. Create a new app password, name it "job-tracker"
-3. Copy the 16-character password it gives you
-
-### 3. Add GitHub Secrets
-In your repo: Settings → Secrets and variables → Actions → New repository secret.
-Add three:
-- `EMAIL_ADDRESS` — your Gmail address
-- `EMAIL_APP_PASSWORD` — the 16-character app password from step 2
-- `EMAIL_TO` — where you want the digest sent (can be same as EMAIL_ADDRESS)
-
-### 4. Test it manually
-Go to the Actions tab in your repo → "Job Tracker" workflow → "Run workflow"
-button. This runs it once immediately instead of waiting for tomorrow's
-schedule, so you can confirm it works.
-
-### 5. Let it run
-It's scheduled for 12:00 UTC (8am Eastern) daily via the cron line in
-`.github/workflows/job-check.yml`. Change that if you want a different time.
-
-## Filling in the remaining companies
-
-I've already confirmed and wired up 4 companies (Fidelity, Truist, Pendo,
-Bandwidth) as working examples. The rest are marked `"ats": "TODO"` in
-`config.json` — the script will skip them and print a warning until you fill
-them in. Here's how to find each one, takes about a minute per company:
-
-**Check if it's Greenhouse:**
-Go to the company's "careers" or "join us" page and click through to the
-actual job listings. If the URL becomes something like
-`job-boards.greenhouse.io/companyname` or `boards.greenhouse.io/companyname`,
-that's Greenhouse. Grab the slug after `.io/` — that's your `token`.
-```json
-{ "name": "Example Co", "ats": "greenhouse", "token": "companyname" }
-```
-
-**Check if it's Lever:**
-Same idea — if the URL becomes `jobs.lever.co/companyname`, that's Lever.
-```json
-{ "name": "Example Co", "ats": "lever", "slug": "companyname" }
-```
-
-**Check if it's Ashby:**
-Look for a URL like `jobs.ashbyhq.com/companyname`. Grab the slug after the last `/`.
-```json
-{ "name": "Example Co", "ats": "ashby", "slug": "companyname" }
-```
-
-**Check if it's Workable:**
-Look for a URL like `apply.workable.com/companyname` or `companyname.workable.com`. Grab the slug.
-```json
-{ "name": "Example Co", "ats": "workable", "slug": "companyname" }
-```
-
-**Check if it's iCIMS:**
-If the URL becomes something like `careers-companyname.icims.com` or a
-similar `*.icims.com` subdomain, that's iCIMS. iCIMS doesn't have a public
-JSON API, but it auto-generates a `sitemap.xml` that lists every job — the
-script uses that instead. Grab the subdomain (the part before `.icims.com`,
-including the prefix):
-```json
-{ "name": "Example Co", "ats": "icims", "subdomain": "careers-companyname.icims.com" }
-```
-Note: some companies use a branded domain (like `jobs.company.com`) that's
-actually iCIMS underneath — check if `https://jobs.company.com/sitemap.xml`
-loads and contains `/jobs/.../job` style URLs before assuming it won't work.
-
-**Check if it's Workday:**
-If the URL looks like `companyname.wd1.myworkdayjobs.com/SiteName` (the
-`wd` number varies: wd1, wd3, wd5...), that's Workday. You need three pieces:
-```json
-{
-  "name": "Example Co",
-  "ats": "workday",
-  "tenant": "companyname",
-  "wd_host": "wd1",
-  "site": "SiteName"
-}
-```
-(`tenant` = the part before `.wdN`, `site` = the part after the domain)
-
-**If it's none of these:** some companies (Deloitte, PwC, EY, KPMG, IBM,
-Cisco, SAS are likely candidates from your list) run custom-built career
-sites or other ATS platforms (iCIMS, SmartRecruiters, Phenom, Eightfold).
-Those need a bit more digging, or a dedicated scraper. Leave those as
-`"ats": "TODO"` for now and send me the careers URL — I can check the page
-structure and add a fetcher for whichever platform it turns out to be.
-
-## Adjusting keywords / signals
-
-Everything's in `config.json`:
-- `keywords` — broad terms that trigger a match (loose on purpose)
-- `entry_level_signals` — phrases that tag a posting "likely entry-level"
-- `experienced_signals` — phrases that tag a posting "likely experienced"
-- Per-company `location_filter` — only match postings whose location text
-  contains one of these strings
-
-Nothing here filters postings *out* — it only adds keyword matching (which
-jobs get emailed at all) and tagging (a label in the email). If you want it
-looser, just add more keywords.
-
-## How the "likely entry-level / experienced / unclear" tag actually works
-
-The tag is based on scanning text for the phrases in `entry_level_signals`
-and `experienced_signals`. What text gets scanned depends on the platform:
-
-- **Greenhouse, Lever, Ashby, Workable**: the full job description is always
-  available from the initial fetch, so tagging considers the whole posting.
-- **Workday**: the initial company-wide listing only includes job *titles*,
-  not descriptions — fetching every description up front would mean one
-  extra request per job, and Workday companies often have hundreds to
-  thousands of postings, so that's too slow to do unconditionally. Instead,
-  the full description is fetched *only* for postings that already matched
-  your keywords (a handful per run, not thousands) — so tagging on a
-  matched Workday posting is just as accurate as any other platform.
-
-**"unclear (no signal)" means no signal phrase was found in whatever text
-was actually scanned.** For a genuine no-signal posting, that's exactly
-right. But if you're looking at an older email from before this description
-fetch was added, a Workday "no signal" tag might just mean the title alone
-didn't contain a signal phrase — the description was never checked. This
-doesn't apply going forward, since matched jobs now always get their
-description fetched regardless of platform.
+1. **Push this to your own GitHub repo.**
+2. **Create a Gmail App Password** (regular passwords won't work here):
+   go to https://myaccount.google.com/apppasswords (needs 2-Step
+   Verification on), create one, save the 16-character code.
+3. **Add three GitHub Secrets** — Settings → Secrets and variables →
+   Actions:
+   - `EMAIL_ADDRESS` — your Gmail address
+   - `EMAIL_APP_PASSWORD` — the code from step 2
+   - `EMAIL_TO` — where you want the digest sent
+4. **Test it manually** — Actions tab → "Job Tracker" → "Run workflow."
+   There's also a "Full report" checkbox on that same screen, which
+   ignores your history and shows every current match — useful the first
+   time you run it, or any time you want a full snapshot instead of just
+   what's new.
+5. **Let it run** — it's scheduled for 12:00 UTC (8am Eastern) daily, set
+   in `.github/workflows/job-check.yml` if you want a different time.
